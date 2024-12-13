@@ -47,7 +47,7 @@ async function fetch_me_their_souls() {
             update_progress(((i + 1) / assets.length) * 100);
         }
         load_text_ref.innerHTML = "Loading complete!";
-        window.location.href = window.location.href.replace("index", "main");
+        window.location.href = window.location.href + "menu.html";
         
     } catch (error) {
         console.error("Error loading assets:", error);
