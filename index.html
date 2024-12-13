@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .body_loading {
+            background-color: #DAD7D7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            transition: all 4s;
+            h1 {
+                opacity: 0.6;
+            }
+            img {
+                width: 300px;
+                height: 300px;
+                opacity: 0.4;
+                transition: all 2s;
+            }
+            .loading_bar {
+                display: block;
+                transition: all 0.3s;
+                opacity: 0.3;
+                overflow: hidden;
+                width: 500px;
+                height: 20px;
+                border: #000000 1px solid;
+                margin-top: 20px;
+                border-radius: 50px;
+                .loading_bar_inner {
+                    width: 0%;
+                    height: 100%;
+                    background-color: #4CAF50;
+                    transition: all 0.4s;
+                }
+            }
+        }
+    </style>
+    <script src="jonklerscripts/loadmann.js" defer></script>
+</head>
+<body class="body_loading">
+    <img src="assets/animated.webp" alt="" srcset="">
+    <h1 id="load_status_text"></h1>
+    <div class="loading_bar">
+        <div class="loading_bar_inner"></div>
+    </div>
+</body>
+</html>

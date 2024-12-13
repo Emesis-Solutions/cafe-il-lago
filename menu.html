@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe i lado or something</title>
+    <script src="jonklerscripts/loadmann_menu.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Joan';
+            src: url('/assets/Joan-Regular.ttf') format('truetype');
+            crossOrigin: 'anonymous';
+        }
+
+        @font-face {
+            font-family: 'IstokWeb';
+            src: url('/assets/IstokWeb-Regular.ttf');
+            crossOrigin: 'anonymous';
+        }
+
+        body {
+            background-color: #DAD7D7;
+            overflow: hidden;
+            margin: 0;
+            position: absolute;
+            padding: 0;
+        }
+
+        h1 {
+            font-family: 'Joan';
+            font-size: 3em;
+            font-weight: 400 !important;
+        }
+
+        h2 {
+
+            font-size: 2em;
+            font-weight: 400 !important;
+            margin: 0;
+
+        }
+
+        ul {
+            font-family: 'Joan';
+            font-size: 1.5em;
+        }
+
+        .rootdiv {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+        }
+
+        #items_container {
+            flex: 75;
+
+            >* {
+                padding-left: 20px;
+            }
+
+            .category_entries {
+                h1 {
+                    font-size: 2.7em;
+                    margin-bottom: 0;
+                }
+            }
+
+        }
+
+        .title_container {
+            button {
+                display: none;
+            }
+        }
+        .genesis {
+            display: none;
+        }
+
+        @media screen and (orientation: portrait) {
+
+            .rootdiv {
+                overflow-x: hidden!important;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #recommended_container {
+                display: none !important;
+            }
+
+            #items_container {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                >* {
+                padding-left: clamp(2px, 1vw, 30px) !important;;
+            }
+
+                .title_container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 90%;
+
+                    h1 {
+                        font-size: 8.5vw !important;
+                    }
+
+                    button {
+                        font-size: 5vw !important;
+                        width: 150px;
+                        display: block;
+                    }
+
+                }
+                .category_entries {
+                    width: 90%;
+                }
+                .item_entries {
+                    width: 100% !important;
+                    label {
+                        width: 100% !important;
+                    }
+                    .item_entry {
+                        width: 100%;
+                        p {
+                            margin-top: 30px;
+                            font-size: calc(1em + 1vw) !important;
+                            margin-left: 10px !important;
+                        }
+                    }
+                }
+
+                .line {
+                    width: 100% !important;
+                }
+            }
+
+            .category_entry {
+                h1 {
+                    font-size: 8.5vw !important;
+                }
+
+            }
+
+            .switch_menu_btn {
+                margin-right: 0 !important;
+            }
+
+        }
+    
+        .item_entries {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-content: flex-start;
+            margin-top: 20px;
+            width: 100%;
+
+            label {
+                width: 80%;
+                height: 100%;
+
+                .item_entry {
+                    width: 80%;
+                    max-height: 80px;
+                    border-radius: 25px;
+
+                    display: flex;
+                    flex-direction: column;
+                    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+                    overflow: hidden;
+                    position: relative;
+                    width: 100%;
+
+                    /* Center items vertically */
+                    .item_1_bg {
+                        position: absolute;
+                        filter: blur(5px) opacity(0.5);
+                        z-index: -1;
+                        width: 100%;
+                        height: 100%;
+                        background-image: url('/assets/suthelvasi.webp');
+                        background-size: cover;
+                        background-position: center;
+                    }
+
+                    .header {
+                        
+                        padding-left: 3.5%;
+                        flex-shrink: 0;
+                        display: flex;
+                        height: 80px !important;
+                        justify-content: space-between;
+                        flex-direction: row;
+                        text-align: center;
+                        max-width: 99%;
+                        width: 99%;
+                        box-sizing: border-box;
+                        font-family: 'IstokWeb';
+                        position: relative;
+                        align-items: center;
+
+                        h2  {
+                            line-break: auto;
+                            overflow: hidden;
+                            
+                            white-space: nowrap;
+                            margin: 0 !important;
+                            padding-top: 0;
+                            margin-block-start: 0 !important;
+                            margin-block-end: 0 !important;
+                            font-size: calc(1em + 1vw);
+
+                        }
+
+                        :nth-child(1) {
+                            text-align: left;
+                            
+                            flex: 3;
+                        }
+                        :nth-child(2) {
+                            text-align: right;
+                            flex:1;
+                        }
+
+                    }
+
+                    p {
+                        font-family: 'IstokWeb';
+                        font-size: 1.5em;
+                        text-indent: 30px;
+                        margin-left: 35px;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+                }
+            }
+        }
+
+
+        input:checked+.item_entry {
+            max-height: 400px !important;
+
+            p {
+                opacity: 1;
+            }
+
+
+        }
+
+        #recommended_container {
+            position: relative;
+            flex: 25;
+            display: flex;
+            flex-direction: column;
+
+            h1 {
+                margin-top: 9vh;
+                margin-right: 60px;
+                text-align: center;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                opacity: 0.2;
+                width: 100%;
+                height: auto;
+            }
+
+            .recommended_items {
+                flex: 80;
+            }
+
+            .button_container {
+                flex: 20;
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                align-items: end;
+
+            }
+        }
+
+        .switch_menu_btn {
+            font-family: 'Joan';
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            background-color: transparent;
+            border: 1px solid;
+            border-radius: 45px;
+            cursor: pointer;
+            width: fit-content !important;
+            padding: 20px 20px !important;
+            text-align: center;
+            height: fit-content;
+            margin-bottom: 20px;
+            margin-right: 30px;
+
+            
+        }
+
+        .switch_menu_btn:hover {
+            background-color: white;
+
+        }
+
+        .line {
+            width: 80%;
+            height: 4px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rootdiv">
+        <div id="items_container">
+            <div class="title_container">
+                <h1>Cafe il lago</h1>
+                <button class="switch_menu_btn"> Menu</button>
+            </div>
+
+            <div class="category_entries">
+                <div class="category_entry genesis">
+                    <h1>Tatlilar</h1>
+                    <div class="line"></div>
+                    <div class="item_entries">
+                        <label for="item_1">
+                            <input type="checkbox" id="item_1" hidden>
+                            <div class="item_entry">
+                                <div class="header">
+                                    <h2 class="title">asd pizza sadfsadfsad sadffsdafsdafsda</h2>
+                                    <h2 class="price">20₺</h2>
+                                </div>
+                                <p> Mmm Sut helvasi mmm sut helvasi mmmmmmmmm sut helvasi mmmmmmmmmmm</p>
+                                <div class="item_1_bg"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="recommended_container">
+            <div class="recommended_items">
+                <h1>Recommended by <br> Chef</h1>
+                <ul>
+                   
+                </ul>
+            </div>
+            <div class="button_container">
+                <button class="switch_menu_btn"> Menu</button>
+                <div></div>
+            </div>
+            <img src="assets/chef_1.png" alt="">
+        </div>
+
+
+        <div>
+
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                background-color: #DAD7D7;
+                overflow: hidden;
+            }
+
+            @font-face {
+                font-family: 'Joan';
+                src: url('assets/Joan-Regular.ttf');
+            }
+
+            body {
+                font-weight: 400 !important;
+                font-family: 'Joan';
+            }
+
+            .root::content {
+                margin-left: 105px;
+            }
+
+            .root {
+
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                height: 60%;
+                width: 100vw;
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: 0;
+
+                h1 {
+                    padding-left: 20px;
+                    margin-left: 2vw;
+                    margin-top: 8.5vh;
+                }
+
+                p {
+                    margin-left: 2vw;
+                    padding-left: 20px;
+                }
+
+                
+            }
+
+            @media (orientation: portrait) {
+                .button_container {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    align-items: center;
+                }
+            }
+
+            .imgcontainer {
+                overflow: hidden;
+                z-index: -1;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+            }
+
+            .kutner {
+                width: 45%;
+                height: 100%;
+                opacity: 0.5;
+            }
+
+            .imgcontainer img {
+                position: relative;
+                right: -6%;
+                bottom: -10%;
+                width: 80vh;
+                height: 80vh;
+                opacity: 0.5;
+                object-fit: contain;
+                transform: scaleX(-1);
+                transition: all 1s;
+            }
+
+            h1 {
+                font-size: 4.6vw;
+                font-weight: 400;
+            }
+
+            .root div {
+                max-width: 760px;
+            }
+
+            div p {
+                font-size: 32px;
+                font-weight: 300;
+                word-break: break-word;
+            }
+
+            @media (max-width: 1380px) {
+                .debugbreakpoint::before {
+                        content: 'Breakpoint: MW1380px' !important;
+                    }
+                @media screen and (min-height: 900px) 
+                {
+                    .debugbreakpoint::before {
+                        content: 'Breakpoint: MW1380pxMH900' !important;
+                    }
+                    .root {
+                        padding-top: 0vh;
+                    }
+
+                    .imgcontainer img {
+                        width: 650px !important;
+                        height: 650px !important;
+                    }
+                }
+
+                .button_container button {
+                    font-size: 2em !important;
+                    width: 250px !important;
+                    height: 250px !important;
+                }
+
+                .imgcontainer img {
+                    height: 500px;
+                    width: 500px;
+                    opacity: 0.3;
+                }
+            }
+
+            @media (max-width: 1400px) and (max-height: 800px) {
+                .debugbreakpoint::before {
+                        content: 'Breakpoint: MW1400pxMH800px' !important;
+                    }
+                h1 {
+                    font-size: 7vw;
+                }
+
+                div p {
+                    font-size: 3.5vw;
+                }
+            }
+
+            @media screen and (max-width: 320px) {
+                .button_container button {
+                    width: 8vw !important;
+                    height: 8vw !important;
+                    font-size: 1.2em !important;
+                }
+            }
+            @media (max-width: 980px) {
+                .debugbreakpoint::before {
+                    content: 'Breakpoint: MW980px' !important;
+                }
+
+                @media screen and (min-height: 1000px) {
+                    .debugbreakpoint::before {
+                        content: 'Breakpoint: MW980px MH1000px' !important;
+                    }
+
+                    h1 {
+                        font-size: 10vw !important;
+                    }
+                    div p {
+                        font-size: 5vw !important;
+                    }
+
+                    .imgcontainer img {
+                        width: 400px !important;
+                        height: 400px !important;
+                    }
+
+                    .button_container button {
+                        width: 220px !important;
+                        height: 220px !important;
+                        font-size: 2.5em !important;
+                    }
+                    
+                }
+
+                h1 {
+
+                    font-size: 6.5vw;
+                }
+                div p {
+                    font-size: 3vw;
+                }
+
+                .imgcontainer img {
+                    width: 400px !important;
+                    height: 400px !important;
+                }
+
+                .button_container button {
+                    width: 220px !important;
+                    height: 220px !important;
+                    font-size: 2.5em !important;
+                }
+
+                @media screen and (min-height: 1000px) {
+                    .debugbreakpoint::before {
+                        content: 'Breakpoint: MW980px MH1000px' !important;
+                    }
+
+                    .imgcontainer img {
+                        width: 500px !important;
+                        height: 500px !important;
+
+                    }
+                }
+
+            }
+
+            @media screen and (min-width: 200px) {
+                .debugbreakpoint::before {
+                        content: 'Breakpoint: MinW200' !important;
+                    }
+                @media screen and (max-height: 600px) {
+                    .debugbreakpoint::before {
+                        content: 'Breakpoint: MinW200MH600px' !important;
+                    }
+                    .imgcontainer img {
+                        width: 300px !important;
+                        height: 300px !important;
+
+                    }
+                }
+            }
+
+            @media (max-height: 550px) {
+                .debugbreakpoint::before {
+                        content: 'Breakpoint: MH700px' !important;
+                    }
+                .button_container {
+                    height: 100% !important;
+                    max-width: 400px !important;
+                }
+                .button_container button {
+                    width: 120px !important;
+                    height: 120px !important;
+                    font-size: 1.4em !important;
+                    border-radius: 33px !important;
+                }
+                .imgcontainer img {
+                    width: 300px !important;
+                    height: 300px !important;
+                }
+
+            }
+
+            .debugbreakpoint {
+                position: fixed;
+                top: 20;
+                right: 0;
+            }
+
+            .debugbreakpoint::before {
+                content: 'Breakpoint: None';
+            }
+
+            @media (max-width: 650px) {
+                .debugbreakpoint::before {
+                    content: 'Breakpoint: MW650px' !important;
+                }
+
+                .root {
+                    padding-left: 0px;
+                }
+
+                .button_container {
+                    max-width: 100% !important;
+                    padding-right: 0% !important;
+                    gap: 0.1vw;
+                    width: 100%;
+                    left: 0;
+                }
+
+
+
+                .imgcontainer img {
+                    width: 400px;
+                    height: 400px;
+                }
+
+                .button_container button {
+                    width: 140px !important;
+                    height: 140px !important;
+                    border-radius: 30px !important;
+                    font-size: 1.5em !important;
+                }
+
+
+                h1 {
+                    padding-top: 0px;
+                    font-size: 15vw;
+                }
+
+                div p {
+                    font-size: 6vw;
+                }
+            }
+
+            .button_container {
+                max-width: 760px;
+                display: flex;
+                justify-content: center;
+                padding-right: 60px;
+            }
+
+            .button_container button {
+                aspect-ratio: 1/1;
+                font-size: calc(1em + 1vw);
+                font-family: 'Joan';
+                margin: 20px;
+                padding: 10px;
+                width: 260px;
+                border: 2px solid;
+                background-color: transparent;
+                border-radius: 45px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .button_container button:hover {
+                background-color: #ebe7e7;
+            }
+
+
+            #debugwh {
+                position: fixed;
+                top: 0;
+                right: 0;
+                font: 1em sans-serif;
+            }
+        </style>
+
+        <script>
+            window.onload = function () {
+                document.getElementById('debugwh').innerText = window.innerWidth + 'x' + window.innerHeight;
+            }
+            window.onresize = function () {
+                document.getElementById('debugwh').innerText = window.innerWidth + 'x' + window.innerHeight;
+            }
+        </script>
+    </head>
+
+<body>
+    <!--     <p id="debugwh"></p>
+    <p class="debugbreakpoint"></p>-->
+    <div class="root">
+        <div>
+            <h1>Cafe il lago</h1>
+            <div>
+                <p>
+                    Forkæl dine smagsløg med vores autentiske, hjemmelavede pizzaer og saftige kebab midt i Trekroner.
+                </p>
+            </div>
+        </div>
+        <div class="button_container">
+            <button onclick="window.location.href = window.location.href.replace('main', 'menu') + '?menu=food'">Mad menu</button>
+            <button onclick="">Drikke menu</button>
+
+        </div>
+        <div class="padder">
+
+        </div>
+    </div>
+    <div class="imgcontainer">
+        <div class="kutner"></div>
+        <img src="https://github.com/Emesis-Solutions/cafe-il-lago/raw/refs/heads/master/assets/bigaryan.png" alt="">
+    </div>
+</body>
+
+</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+</body>
+
+</html>
