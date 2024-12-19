@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .body_loading {
+            overflow: hidden;
             background-color: #DAD7D7;
             display: flex;
             justify-content: center;
@@ -38,6 +39,12 @@
                     height: 100%;
                     background-color: #4CAF50;
                     transition: all 0.4s;
+                }
+            }
+
+            @media screen and (orientation: portrait) {
+                .loading_bar {
+                    width: 80%;
                 }
             }
         }
