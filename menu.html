@@ -110,7 +110,10 @@
                 flex-direction: column;
                 align-items: center;
             }
-
+            #fake_recommended_container {
+                display: none !important;
+            }
+            
             #recommended_container {
                 display: none !important;
             }
@@ -285,10 +288,18 @@
 
 
         }
+        #fake_recommended_container {
+            flex: 25;
+
+        }
 
         #recommended_container {
-            position: relative;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
             flex: 25;
+
             display: flex;
             flex-direction: column;
 
@@ -397,6 +408,9 @@
 
             </div>
         </div>
+        <div id="fake_recommended_container">
+            
+        </div>
         <div id="recommended_container">
             <div class="recommended_items">
                 <h1>Recommended by <br> Chef</h1>
@@ -412,7 +426,6 @@
         </div>
 
 
-        <div>
 
 </body>
 
