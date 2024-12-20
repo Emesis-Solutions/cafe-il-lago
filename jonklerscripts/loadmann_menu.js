@@ -87,9 +87,9 @@ window.onload = async () => {
         item.querySelector('h2.price').innerText = price;
         item.querySelector('p').innerText = description;
         const categoryImage = category_image_json[category];
-        if (categoryImage) {
-            item.querySelector('.item_1_bg').style.setProperty('background-image', "url('" + MENU_CATEGORY_IMAGE_URL + category_image_json[category] + "')", 'important');
-        }
+        // if (categoryImage) {
+        //     item.querySelector('.item_1_bg').style.setProperty('background-image', "url('" + MENU_CATEGORY_IMAGE_URL + category_image_json[category] + "')", 'important');
+        // }
         return item;
     }
     const categories = {};
@@ -106,7 +106,8 @@ window.onload = async () => {
 
     Object.keys(categories).forEach(category => {
         const categoryElement = genElement.cloneNode(true);
-        categoryElement.querySelector('h1').innerText = category;
+        categoryElement.querySelector('.category_title h1').innerText = category;
+        categoryElement.querySelector('.category_title img').src = MENU_CATEGORY_IMAGE_URL + category_image_json[category];
         const itemEntries = categoryElement.querySelector('.item_entries');
         categories[category].forEach(menuItem => {
             const item = createElement(menuItem.title, menuItem.price, menuItem.description, category);
