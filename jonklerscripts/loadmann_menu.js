@@ -1,4 +1,4 @@
-var MENU_CATEGORY_IMAGE_URL = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/images/"
+var MENU_CATEGORY_IMAGE_URL = "https://github.com/Emesis-Solutions/CIL-CAT/raw/refs/heads/main/images/"
 var MENU_CATEGORY_IMAGES_JSON_URL = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/categories.json"
 
 window.onload = async () => {
@@ -7,7 +7,7 @@ window.onload = async () => {
     var json;
     const fetchMenuData = async () => {
         try {
-            const response = await fetch("https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/" + (paramValue === "food" ? "food.json" : "drinks.json"));
+            const response = await fetch("https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/" + (paramValue === "food" ? "food.json" : "drinks.json"), { cache: "no-store" });
             const menuData = await response.json();
             json = menuData;
             console.log(menuData);
@@ -18,7 +18,7 @@ window.onload = async () => {
 
     const fetchCategoryImages = async () => {
         try {
-            const response = await fetch(MENU_CATEGORY_IMAGES_JSON_URL);
+            const response = await fetch(MENU_CATEGORY_IMAGES_JSON_URL, { cache: "no-store" });
             category_image_json = await response.json();
             console.log(category_image_json);
         } catch (error) {
@@ -53,6 +53,7 @@ window.onload = async () => {
     }
 
     await fetchMenuData();
+    await fetchCategoryImages();
     var gen = document.getElementsByClassName("category_entry");
     var genElement = gen[0].cloneNode(true);
     genElement.classList.remove('genesis');
@@ -70,9 +71,9 @@ window.onload = async () => {
         item.querySelector('h2.title').innerText = title;
         item.querySelector('h2.price').innerText = price;
         item.querySelector('p').innerText = description;
-        const categoryImage = category_image_json.find(cat => cat.category === category);
+        const categoryImage = category_image_json[category];
         if (categoryImage) {
-            item.querySelector('.item_1_bg').style.setProperty('background-image', "url('" + category_image_json.find(cat => cat.category === category).image + "')", 'important');
+            item.querySelector('.item_1_bg').style.setProperty('background-image', "url('" + MENU_CATEGORY_IMAGE_URL + category_image_json[category] + "')", 'important');
         }
         return item;
     }

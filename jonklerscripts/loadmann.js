@@ -3,7 +3,7 @@ var outer_progressbar_ref;
 var load_text_ref;
 
 var base_url = "https://github.com/Emesis-Solutions/cafe-il-lago/raw/refs/heads/master/assets/"
-var MENU_CATEGORY_IMAGE_URL = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/images/"
+var MENU_CATEGORY_IMAGE_URL = "https://github.com/Emesis-Solutions/CIL-CAT/raw/refs/heads/main/images/"
 var MENU_CATEGORY_IMAGES_JSON_URL = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/categories.json"
 
 assets = [
@@ -26,11 +26,13 @@ function update_progress(percentage) {
 
 async function fetch_me_their_souls() {
     try {
-        let response = await fetch(MENU_CATEGORY_IMAGES_JSON_URL);
+        let response = await fetch(MENU_CATEGORY_IMAGES_JSON_URL, { cache: "no-store" });
         let json = await response.json();
-        for (let i = 0; i < json.length; i++) {
-            let category = json[i];
-            website_category_images.push(category.image);
+        for (let key in json) {
+            if (json.hasOwnProperty(key)) {
+            let category = json[key];
+            website_category_images.push(category);
+            }
         }
 
         for (let i = 0; i < assets.length; i++) {
@@ -58,15 +60,26 @@ async function fetch_me_their_souls() {
         }
         for(let i = 0; i < website_category_images.length; i++) {
             let image = website_category_images[i];
-            let response = await fetch(MENU_CATEGORY_IMAGE_URL + image, { mode: "no-cors", cache: "default" });
-            let blob = await response.blob();
-            let url = URL.createObjectURL(blob);
-            let img = new Image();
-            img.src = url;
-            img.onload = function () {
-                update_progress(50 + ((i + 1) / website_category_images.length) * 50);
+            console.log("Loading category image: " + image + " from " + MENU_CATEGORY_IMAGE_URL);
+            try {
+                let response = await fetch(MENU_CATEGORY_IMAGE_URL + image, { mode: "no-cors", cache: "default" });
+                let blob = await response.blob();
+                let url = URL.createObjectURL(blob);
+                let img = new Image();
+                img.src = url;
+                img.onload = function () {
+                    print("Loaded category image: " + image);
+                    update_progress(50 + ((i + 1) / website_category_images.length) * 50);
+                }
+            }
+            catch (error) {
+                console.error("Error loading category image:", error);
+                load_text_ref.innerHTML = "Error loading category images. Check your internet connection.";
+                outer_progressbar_ref.style.opacity = 0;
+                return
             }
         }
+        update_progress(100);
         load_text_ref.innerHTML = "Loading complete!";
         window.location.href = window.location.href + "main.html";
         
