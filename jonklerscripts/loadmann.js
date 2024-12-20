@@ -28,7 +28,7 @@ async function fetch_me_their_souls() {
     try {
         let response = await fetch(KILLSWITCHY, { cache: "no-store" });
         let text = await response.text();
-        if (text.at("KILL") != -1) {
+        if (text.includes("KILL")) {
             load_text_ref.innerHTML = "Whoops! Looks like the guy who ordered the website thought it was a good idea to not pay the developers. The website is now dead.";
             setTimeout(() => {
                 window.location.href = "https://www.youtube.com/watch?v=9bZkp7q19f0";
