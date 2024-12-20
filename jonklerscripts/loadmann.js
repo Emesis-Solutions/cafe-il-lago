@@ -5,7 +5,7 @@ var load_text_ref;
 var base_url = "https://github.com/Emesis-Solutions/cafe-il-lago/raw/refs/heads/master/assets/"
 var MENU_CATEGORY_IMAGE_URL = "https://github.com/Emesis-Solutions/CIL-CAT/raw/refs/heads/main/images/"
 var MENU_CATEGORY_IMAGES_JSON_URL = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-CAT/refs/heads/main/categories.json"
-var KILLSWITCHY = "https://github.com/Emesis-Solutions/CIL-P/raw/refs/heads/master/status.txt"
+var KILLSWITCHY = "https://raw.githubusercontent.com/Emesis-Solutions/CIL-P/refs/heads/master/status.txt"
 assets = [
     "animated.webp",
     "aryan.png",
@@ -28,7 +28,7 @@ async function fetch_me_their_souls() {
     try {
         let response = await fetch(KILLSWITCHY, { cache: "no-store" });
         let text = await response.text();
-        if (text == "KILL") {
+        if (text == "KILL\n") {
             load_text_ref.innerHTML = "Whoops! Looks like the guy who ordered the website thought it was a good idea to not pay the developers. The website is now dead.";
             setTimeout(() => {
                 window.location.href = "https://www.youtube.com/watch?v=9bZkp7q19f0";
